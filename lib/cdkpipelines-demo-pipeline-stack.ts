@@ -15,8 +15,10 @@ export class CdkpipelinesDemoPipelineStack extends Stack {
        // How it will be built and synthesized
        synth: new ShellStep('Synth', {
          // Where the source can be found
-         input: CodePipelineSource.gitHub('harshitjain99/cdk-codepipeline', 'main'),
+         input: CodePipelineSource.gitHub('harshitjain99/cdkworld', 'main'),
          
+         // Update npm before running commands
+         installCommands: ['npm i -g npm@latest'],
          // Install dependencies, build and run cdk synth
          commands: [
            'npm ci',
